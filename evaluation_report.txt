@@ -1,0 +1,31 @@
+=== OVERALL (flag if risk_score >= 3) ===
+Transactions: 50,000 | planted fraud: 750
+Confusion matrix: TP=647  FP=149  FN=103  TN=49101
+Precision=81.3%  Recall=86.3%  F1=0.837
+
+=== THRESHOLD TRADE-OFF (lower threshold = catch more, more false alarms) ===
+ threshold  TP   FP  FN    TN  precision  recall    F1
+         1 732 3697  18 45553      0.165   0.976 0.283
+         2 653 1154  97 48096      0.361   0.871 0.511
+         3 647  149 103 49101      0.813   0.863 0.837
+         4 181    4 569 49246      0.978   0.241 0.387
+         5  19    1 731 49249      0.950   0.025 0.049
+         6  18    0 732 49250      1.000   0.024 0.047
+         7   0    0 750 49250      0.000   0.000 0.000
+
+=== EACH RULE ON ITS OWN ===
+         rule  hits  TP   FP  precision  recall
+zscore_amount   191 170   21      0.890   0.227
+   iqr_amount  1066 379  687      0.356   0.505
+     velocity   206 206    0      1.000   0.275
+location_jump   264 187   77      0.708   0.249
+   new_device  1124 102 1022      0.091   0.136
+     odd_hour  2149 148 2001      0.069   0.197
+
+=== RECALL BY FRAUD PATTERN (flagged at score >= 3) ===
+                  total  caught  recall
+fraud_type                             
+high_value          225     148   0.658
+location_jump       187     187   1.000
+new_device_night    113     106   0.938
+velocity            225     206   0.916
