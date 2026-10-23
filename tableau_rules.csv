@@ -1,7 +1,0 @@
-rule,total_hits,hits_in_flagged_txns,amount_in_flagged_txns
-zscore_amount,191,191,2704343.11
-iqr_amount,1066,328,3411309.48
-velocity,206,206,646492.84
-location_jump,264,264,640415.04
-new_device,1124,154,583737.95
-odd_hour,2149,183,787103.65
