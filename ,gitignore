@@ -1,0 +1,17 @@
+# Generated data
+data/
+
+# Large Tableau export
+output/tableau_transactions.csv
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Database files
+*.db
+
+# Environment and secrets
+.env
+.venv/
+venv/
