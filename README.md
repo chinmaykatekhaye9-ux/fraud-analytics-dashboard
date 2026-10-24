@@ -59,7 +59,7 @@ The project covers data generation, data cleaning, SQL analysis, risk scoring, p
 
 The Tableau workbook is available in the repository:
 
-**[View or download the Tableau packaged workbook (.twbx)](dashboard/Fraud%20Analysis%20Dashboard.twbx)**
+**[View or download the Tableau packaged workbook (.twbx)](https://public.tableau.com/views/FraudAnalysisDashboard_17928646064980/FraudAnalysisDashboard)**
 
 The workbook includes visualizations covering:
 
