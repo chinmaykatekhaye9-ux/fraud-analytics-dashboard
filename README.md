@@ -4,7 +4,7 @@
 
 An end-to-end fraud analytics project that analyzes **50,000 simulated retail banking transactions** to identify suspicious activity using Python, SQL, and six explainable fraud detection rules.
 
-The project covers data generation, data cleaning, SQL analysis, risk scoring, performance evaluation, and preparation of dashboard-ready datasets for Tableau.
+The project covers data generation, data cleaning, SQL analysis, risk scoring, performance evaluation, and dashboard-ready data preparation for Tableau.
 
 > **Data Disclaimer:** This project uses simulated data, not real customer or banking records.
 
@@ -13,61 +13,80 @@ The project covers data generation, data cleaning, SQL analysis, risk scoring, p
 - Identify potentially fraudulent transactions.
 - Detect unusual spending patterns and suspicious transaction behavior.
 - Build a weighted risk-scoring system to prioritize transactions for review.
-- Evaluate fraud detection performance using precision, recall, and F1-score.
-- Prepare data for fraud monitoring dashboards.
+- Evaluate detection performance using precision, recall, and F1-score.
+- Prepare transaction analytics for fraud monitoring dashboards.
 
 ## Tools and Technologies
 
 - **Python:** Pandas, NumPy
 - **SQL:** SQLite, CTEs, window functions, aggregations
-- **Data Visualization:** Tableau Public (dashboard planned)
-- **Analytics Techniques:** Z-Score, IQR, transaction velocity, location and device anomaly detection
+- **Data Visualization:** Tableau
+- **Analytics Techniques:** Z-score, IQR, transaction velocity, location and device anomaly detection
 
 ## Methodology
 
-1. **Data Generation:** Simulated 50,000 transactions across 2,000 customers, including planted fraud patterns.
-2. **Data Cleaning:** Removed duplicate records, standardized city names, handled missing values, and validated the dataset.
-3. **SQL Analysis:** Analyzed transaction trends, customer activity, and suspicious behavior using aggregations and window functions.
-4. **Fraud Detection:** Implemented six rules covering unusual amounts, transaction bursts, location changes, unfamiliar devices, and odd-hour activity.
-5. **Risk Scoring:** Combined rule weights to classify transactions as Low, Medium, or High risk.
-6. **Evaluation:** Compared flagged transactions against simulated fraud labels using classification metrics.
-7. **Dashboard Preparation:** Exported analysis results into Tableau-ready CSV files.
+1. **Data Generation:** Generate 50,000 simulated transactions across 2,000 customers, including planted fraud patterns.
+2. **Data Cleaning:** Remove duplicate records, standardize city names, handle missing values, and validate the dataset.
+3. **SQL Analysis:** Analyze transaction trends, customer activity, and suspicious behavior using aggregations and window functions.
+4. **Fraud Detection:** Apply six rules covering unusual amounts, transaction bursts, location changes, unfamiliar devices, and odd-hour activity.
+5. **Risk Scoring:** Combine rule weights to classify transactions as Low, Medium, or High risk.
+6. **Evaluation:** Compare flagged transactions against simulated fraud labels using classification metrics.
+7. **Dashboard Preparation:** Export analysis results into dashboard-ready CSV files for visualization in Tableau.
 
 ## Fraud Detection Rules
 
-- Z-Score analysis of transaction amounts
-- Interquartile Range (IQR) anomaly detection
-- High transaction velocity
-- Unusual location changes
-- New device detection
-- Odd-hour transaction monitoring
+- **Z-score analysis:** Identify unusually large or small transaction amounts.
+- **Interquartile Range (IQR):** Detect statistical outliers.
+- **Transaction velocity:** Flag unusually frequent transactions.
+- **Location anomalies:** Identify suspicious location changes.
+- **Device anomalies:** Detect transactions from unfamiliar devices.
+- **Odd-hour monitoring:** Flag transactions occurring during unusual hours.
 
 ## Key Results
 
 | Metric | Result |
 |---|---:|
-| Clean transactions analyzed | 50,000 |
+| Transactions analyzed | 50,000 |
 | Simulated fraud cases | 750 |
 | Transactions flagged | 796 |
 | Precision | 81.3% |
 | Recall | 86.3% |
 | F1-score | 0.837 |
 
-*Results are from the simulated dataset and the project's evaluation run. They should not be interpreted as real-world banking fraud detection performance.*
+*These figures represent the project's reported evaluation results on simulated data. They are not indicative of real-world banking fraud detection performance.*
+
+## Tableau Dashboard
+
+The Tableau workbook is available in the repository:
+
+**[View or download the Tableau packaged workbook (.twbx)](dashboard/Fraud%20Analysis%20Dashboard.twbx)**
+
+The workbook includes visualizations covering:
+
+- KPI summary
+- Precision and recall by rule
+- Flag rate over time
+- Transactions flagged by risk level
+- Flagged amounts over time
+- Transaction activity by hour
+- Flag rate by city
+- Rules triggered
+
+The workbook's data-source availability and portability should be verified before sharing it as a fully reproducible dashboard.
 
 ## Key Insights
 
-- Combining multiple weighted rules performed better than relying on individual rules alone.
-- Transaction velocity and location inconsistencies helped identify suspicious behavior.
-- High-value fraud was a weaker detection area, providing an opportunity to improve rule weights and test alternative models.
-- The evaluation demonstrates the trade-off between identifying more fraud cases and reducing false positives.
+- Combining multiple weighted rules can help identify suspicious behavior across different transaction patterns.
+- Transaction velocity and location inconsistencies provide useful risk indicators.
+- High-value fraud remains an area for further investigation and threshold tuning.
+- Fraud detection involves a trade-off between identifying more fraud cases and reducing false positives.
 
 ## Limitations and Future Improvements
 
-- Fraud patterns were simulated, so results may be optimistic.
+- Fraud patterns are simulated, so results may not generalize to real-world transactions.
 - Customer baselines use historical information from the full dataset rather than strictly time-ordered historical data.
-- Future improvements include time-aware detection, threshold tuning, and comparison with Logistic Regression or Random Forest models.
-- A Tableau Public dashboard will be added after development and publication.
+- Future improvements include time-aware detection, threshold tuning, and comparisons with Logistic Regression or Random Forest models.
+- Further validation is needed to confirm dashboard portability and reproducibility from a clean setup.
 
 ## Skills Demonstrated
 
@@ -76,14 +95,41 @@ The project covers data generation, data cleaning, SQL analysis, risk scoring, p
 - Python and Pandas
 - SQL Querying and Window Functions
 - Rule-Based Anomaly Detection
-- Classification Metrics and Model Evaluation
-- Data Visualization and Dashboard Preparation
+- Classification Metrics and Evaluation
+- Tableau Dashboard Preparation
 
 ## How to Run
 
+### Prerequisites
+
+- Python 3 installed
+- Git installed
+
+### Setup
+
+Clone the repository and open the project directory:
+
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/chinmaykatekhaye9-ux/fraud-analytics-dashboard.git
+cd fraud-analytics-dashboard
+```
+
+Create and activate a virtual environment.
+
+**Windows:**
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+Install dependencies and run the pipeline:
+
+```bash
+python -m pip install -r requirements.txt
 python run_all.py
 ```
 
-The pipeline generates simulated transaction data, cleans the records, performs SQL analysis, applies fraud detection rules, evaluates results, and exports dashboard-ready datasets.
+The pipeline is intended to generate simulated transaction data, clean records, perform SQL analysis, apply fraud detection rules, evaluate results, and export dashboard-ready datasets.
+
+Actual outputs may vary depending on the implementation and configuration.
